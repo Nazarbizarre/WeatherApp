@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="static/result.css">
+</head>
+
+<body>
+    <div id="container">
+        <h1>Weather in {{city}}</h1>
+    </div>
+    <form id="weather_card">
+        <p><strong>Temperature:</strong> {{ temp }}°C</p>
+        <p><strong>Feels like:</strong> {{ feels }}°C</p>
+        <p><strong>Description:</strong> {{ description }}</p>
+    </form>
+    
+</body>
+</html>

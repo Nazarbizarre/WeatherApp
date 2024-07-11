@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="static/index.css">
+</head>
+<body>
+    <form action="/weather" method="POST">
+        <h1>Weather</h1>
+        <label for="city">Enter the City: </label>
+        <input type="text" id="city" name="city" required minlength="4" maxlength="27" size="10" list="example_cities" />
+        <datalist id="example_cities">
+            <option value="Kyiv"></option>
+            <option value="Dnipro"></option>
+            <option value="Odesa"></option>
+            <option value="Lviv"></option>
+            <option value="Kharkiv"></option>
+        </datalist>
+        <button type="submit" class="btn-primary">Check Weather</button>
+    </form>
+</body>
+</html>

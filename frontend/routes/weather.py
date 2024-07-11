@@ -2,6 +2,7 @@ from .. import app
 from flask import request, render_template
 import requests
 
+
 KEY = "a1375bea9da1dde64a287e3ac2a73913"
 
 @app.post("/weather")

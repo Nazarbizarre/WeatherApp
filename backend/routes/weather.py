@@ -6,10 +6,17 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-weather_app = WeatherApp("a1375bea9da1dde64a287e3ac2a73913")
+weather_app = WeatherApp(getenv("API_KEY"))
 
 
+@app.get("/weather/{city}")
 @app.get("/weather/{city}/{forecast_type}")
-def weather(city:str, forecast_type:str):
-    data = weather_app.make_response(city, forecast_type)
-    return (data)
+def weather(city:str, forecast_type:str="weather"):
+    weather = weather_app.extract(city, forecast_type) 
+    # data = weather_app.transform(weather, "temp", "feels_like", json=weather)
+    data = {
+        "temp": weather_app.transform(weather, "main", "temp"),
+        "feels_like": weather_app.transform(weather, "main", "feels_like"),
+        "description": weather_app.transform(weather, "weather", "description")
+    }
+    return data

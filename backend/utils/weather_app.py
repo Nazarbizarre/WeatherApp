@@ -14,9 +14,19 @@ class WeatherApp:
             "units": units,
         }
 
-    def make_response(self, city, forecast_type):
+    def extract(self, city, forecast_type):
         response = get(
             url=f"{self.base_url}{forecast_type}",
             params=self.__get_params(city)
         )
         return response.json()
+    
+    
+    def transform(self, json, column:str, prop):
+        # data_raw = json.get(column)
+        # data = {}
+        # for i in args:
+        #     data[i] = data_raw.get(i)
+        data_raw = json.get(column)
+        data = data_raw[0].get(prop)
+        return data

@@ -10,12 +10,12 @@ def weather():
     city = request.form["city"]
     response = requests.get(f"http://127.0.0.1:8000/weather/{city}/weather")
     data = response.json()
-    weather = data["main"]
-    temp = weather["temp"]
-    feels = weather["feels_like"]
-    description = "No Information" if data["weather"][0]["description"] == 0 else data["weather"][0]["description"]
+    # weather = data["main"]
+    temp = data["temp"]
+    feels = data["feels_like"]
+    description = "No Information" if data["description"] == 0 else data["description"]
 
-    return render_template('result.html', city=city, temp=temp, feels=feels, description=description)
+    return render_template('result.html', city=city, temp=temp, feels=feels, description=description) 
 
 # @app.get("/weather/<city>/<forecast_type>") # /weather/kherson/forecast|weather=weather
 # def weather(city:str, forecast_type:str="weather"):

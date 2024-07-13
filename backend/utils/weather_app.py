@@ -22,11 +22,17 @@ class WeatherApp:
         return response.json()
     
     
-    def transform(self, json, column:str, prop):
-        # data_raw = json.get(column)
-        # data = {}
-        # for i in args:
-        #     data[i] = data_raw.get(i)
+    def transform(self, json, column: str, *args):
         data_raw = json.get(column)
-        data = data_raw[0].get(prop)
-        return data
+        print(data_raw)
+        data = {}
+        if isinstance(data_raw, dict):
+            for arg in args:
+                data[arg] = data_raw.get(arg)
+            print(data)
+            return data
+        else:
+            for arg in args:
+                data[arg] = data_raw[0].get(arg)
+            print(data)
+            return data
